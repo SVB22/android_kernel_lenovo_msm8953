@@ -549,7 +549,7 @@ static int pp_dither_set_config(char __iomem *base_addr,
 	dither_cfg_data = (struct mdp_dither_cfg_data *) cfg_data;
 
 	if (dither_cfg_data->version != mdp_dither_v1_7) {
-		pr_err("invalid dither version %d\n", dither_cfg_data->version);
+		pr_debug("invalid dither version %d\n", dither_cfg_data->version);
 		return -EINVAL;
 	}
 	if (dither_cfg_data->flags & MDP_PP_OPS_READ) {
@@ -576,7 +576,7 @@ static int pp_dither_set_config(char __iomem *base_addr,
 		(dither_data->b_cb_depth >= DITHER_DEPTH_MAP_INDEX) ||
 		(dither_data->r_cr_depth >= DITHER_DEPTH_MAP_INDEX) ||
 		(dither_data->len > DITHER_MATRIX_INDEX)) {
-		pr_err("invalid data for dither, g_y_depth %d y_cb_depth %d r_cr_depth %d\n len %d",
+		pr_debug("invalid data for dither, g_y_depth %d y_cb_depth %d r_cr_depth %d\n len %d",
 			dither_data->g_y_depth, dither_data->b_cb_depth,
 			dither_data->r_cr_depth, dither_data->len);
 		return -EINVAL;
